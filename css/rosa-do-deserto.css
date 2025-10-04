@@ -1,0 +1,104 @@
+/* Cor do fundo da página */
+body {
+    background-color: #fff5f5;
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+
+/* Centralizar o conteúdo */
+main {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Títulos */
+h1 {
+    color: #e91e63;
+    text-align: center;
+}
+
+h2 {
+    color: #d81b60;
+    margin-top: 30px;
+}
+
+h3 {
+    color: #c2185b;
+    text-align: center;
+}
+
+/* Parágrafos */
+p {
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+/* Listas */
+ul {
+    margin-left: 20px;
+}
+
+li {
+    margin-bottom: 8px;
+}
+
+/* Áudio */
+audio {
+    width: 100%;
+    margin: 10px 0;
+}
+
+/* Imagens */
+img {
+    width: 100%;
+    max-width: 500px;
+    display: block;
+    margin: 0 auto;
+    border: 3px solid pink;
+    border-radius: 10px;
+}
+
+/* Galeria */
+.galeria-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.galeria-item {
+    width: 150px;
+    text-align: center;
+}
+
+.galeria-item img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+}
+
+/* Links */
+a {
+    color: #e91e63;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+    margin: 20px 0;
+    padding: 10px 20px;
+    border: 2px solid #e91e63;
+    border-radius: 5px;
+}
+
+a:hover {
+    background-color: #e91e63;
+    color: white;
+}
+
+/* Rodapé */
+footer {
+    text-align: center;
+    margin-top: 30px;
+    padding: 15px;
+    background-color: #333;
+    color: white;
+}

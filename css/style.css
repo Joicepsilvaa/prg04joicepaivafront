@@ -1,0 +1,145 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos gerais */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f8f0;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Cabeçalho */
+header {
+    background-color: #2e7d32;
+    color: white;
+    text-align: center;
+    padding: 2rem;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+header p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+/* Conteúdo principal */
+main {
+    margin-bottom: 2rem;
+}
+
+/* Seção de plantas */
+.plantas {
+    margin-bottom: 2rem;
+}
+
+.plantas h2 {
+    color: #2e7d32;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+}
+
+/* Grid de plantas */
+.plantas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+/* Cards de plantas */
+.planta-card {
+    background: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    text-align: center;
+    border: 2px solid #e8f5e9;
+}
+
+.planta-card h3 {
+    color: #2e7d32;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.planta-card p {
+    margin-bottom: 0.5rem;
+    color: #555;
+}
+
+/* Botões */
+.regar-btn {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 0.7rem 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 1rem;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.regar-btn:hover {
+    background-color: #45a049;
+}
+
+/* Links */
+a {
+    color: #2e7d32;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    margin: 1rem 0;
+    padding: 0.5rem 1rem;
+    border: 2px solid #2e7d32;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    background-color: #2e7d32;
+    color: white;
+}
+
+/* Rodapé */
+footer {
+    text-align: center;
+    padding: 1.5rem;
+    background-color: #333;
+    color: white;
+    border-radius: 10px;
+    margin-top: 2rem;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    .plantas {
+        grid-template-columns: 1fr;
+    }
+    
+    .planta-card {
+        padding: 1rem;
+    }
+}
