@@ -35,6 +35,42 @@ header p {
     opacity: 0.9;
 }
 
+/* Barra de navegação */
+nav {
+    background-color: #1b5e20;
+    margin-top: 1.5rem;
+    border-radius: 8px;
+    padding: 0.5rem 0;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+}
+
+nav li {
+    display: inline;
+}
+
+nav a {
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+nav a:hover {
+    background-color: #4caf50;
+    transform: scale(1.05);
+}
+
 /* Conteúdo principal */
 main {
     margin-bottom: 2rem;
@@ -125,7 +161,16 @@ footer {
     margin-top: 2rem;
 }
 
-/* Responsividade */
+/* Responsividade da barra de navegação */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+}
+
+/* Responsividade geral*/
 @media (max-width: 768px) {
     body {
         padding: 10px;
