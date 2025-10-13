@@ -8,22 +8,26 @@
     <link rel="stylesheet" href="../css/style.css">
 
 </head>
+
 <body>
-    <header>
-        <h1>🌿 Meu Jardim</h1>
-        <p>Sistema para cuidar das suas plantinhas</p>
+    <div id="interface">
+        <header id="cabecalho">
+            <hgroup>
+                <h1>🌿 Meu Jardim</h1>
+                <h2>Sistema para cuidar das suas plantinhas</h2>
+            </hgroup>
 
-        <!-- Navegação principal -->
-        <nav>
-            <ul>
-                <li><a href="rosa_do_deserto.html">Rosas do Deserto</a></li>
-                <li><a href="atividade05.html">Paleta de Cores</a></li>
-            </ul>
-        </nav>
-    </header>
+            <img id="icone" src="../img/favicon.ico" alt="ícone planta">
 
-    <main>
-        <!-- Seção principal de plantas -->
+            <nav id="menu">
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="rosa_do_deserto.html">Rosas do Deserto</a></li>
+                    <li><a href="atividade05.html">Paleta de Cores</a></li>
+                </ul>
+            </nav>
+        </header>
+
         <section class="plantas">
             <h2>Minhas Plantas</h2>
             
@@ -31,27 +35,24 @@
                 <h3>Suculenta</h3>
                 <p>🌞 Sol: Meia-sombra</p>
                 <p>💧 Água: 1x por semana</p>
-                <button class="regar-btn">Regar Agora</button>
             </article>
 
             <article class="planta-card">
                 <h3>Roseira</h3>
                 <p>🌞 Sol: Sombra</p>
                 <p>💧 Água: 2x por semana</p>
-                <button class="regar-btn">Regar Agora</button>
             </article>
 
             <article class="planta-card">
                 <h3>Cacto</h3>
                 <p>🌞 Sol: Pleno sol</p>
                 <p>💧 Água: 1x a cada 15 dias</p>
-                <button class="regar-btn">Regar Agora</button>
             </article>
         </section>
-    </main>
 
-    <footer>
-        <p>Joice Paiva</p>
-    </footer>
+        <footer>
+            <p>Joice Paiva</p>
+        </footer>
+    </div>
 </body>
 </html>

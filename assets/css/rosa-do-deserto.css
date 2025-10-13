@@ -1,168 +1,132 @@
-/* Cor do fundo da página */
-body {
+/* Estrutura principal */
+div#interface {
+    width: 100%;
+    max-width: 1100px;
+    min-width: 400px;
+    margin: auto;
     background-color: #fff5f5;
+    border-radius: 10px;
+    padding: 15px;
     font-family: Arial, sans-serif;
-    padding: 20px;
 }
 
-/* Barra de navegação */
-nav {
+/* Cabeçalho */
+header#cabecalho {
     background-color: #c2185b;
-    margin-top: 1.5rem;
-    border-radius: 8px;
-    padding: 0.5rem 0;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
 }
 
-nav ul {
+header#cabecalho h1 {
+    margin-bottom: 5px;
+}
+
+header#cabecalho h2 {
+    font-weight: normal;
+    font-size: 1.1rem;
+}
+
+img#icone {
+    width: 60px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+/* Menu */
+nav#menu {
+    background-color: #880e4f;
+    border-radius: 8px;
+    margin-top: 15px;
+    text-align: center;
+}
+
+nav#menu ul {
     list-style: none;
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    flex-wrap: wrap;
     margin: 0;
     padding: 0;
 }
 
-nav li {
-    display: inline;
+nav#menu li {
+    display: inline-block;
+    margin: 0 10px;
+    transition: background-color 1s;
 }
 
-nav a {
-    color: white;
-    font-weight: bold;
-    text-decoration: none;
-    padding: 0.6rem 1.2rem;
-    border-radius: 5px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-nav a:hover {
+nav#menu li:hover {
     background-color: #e91e63;
-    transform: scale(1.05);
+    border-radius: 5px;
 }
 
-/* Centralizar o conteúdo */
-main {
-    max-width: 800px;
-    margin: 0 auto;
+nav#menu a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    padding: 8px 12px;
 }
 
-/* Títulos */
-h1 {
+/* Seções */
+h2, h3 {
     color: #e91e63;
-    text-align: center;
-}
-
-h2 {
-    color: #e91e63;
-    margin-top: 30px;
-}
-
-h3 {
-    color: #e91e63;
-    text-align: center;
-}
-
-/* Parágrafos */
-p {
-    line-height: 1.5;
-    margin-bottom: 15px;
-}
-
-/* Listas */
-ul {
-    margin-left: 20px;
-}
-
-li {
-    margin-bottom: 8px;
-}
-
-/* Áudio */
-audio {
-    width: 100%;
-    margin: 10px 0;
-}
-
-/* Imagens */
-img {
-    width: 100%;
-    max-width: 500px;
-    display: block;
-    margin: 0 auto;
-    border: 3px solid pink;
-    border-radius: 10px;
+    margin-top: 25px;
 }
 
 /* Galeria */
 .galeria-grid {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
     justify-content: center;
-}
-
-.galeria-item {
-    width: 150px;
-    text-align: center;
+    gap: 10px;
 }
 
 .galeria-item img {
-    width: 100%;
+    width: 150px;
     height: 120px;
     object-fit: cover;
+    border: 3px solid pink;
+    border-radius: 8px;
 }
 
-/* Links */
-a {
-    color: #e91e63;
-    font-weight: bold;
-    text-decoration: none;
-    display: inline-block;
-    margin: 20px 0;
-    padding: 10px 20px;
-    border: 2px solid #e91e63;
-    border-radius: 5px;
+/* Vídeo responsivo */
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* proporção 16:9 */
+    height: 0;
+    overflow: hidden;
+    margin-top: 15px;
+    border-radius: 8px;
 }
 
-a:hover {
-    background-color: #e91e63;
-    color: white;
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
 /* Rodapé */
 footer {
     text-align: center;
-    margin-top: 30px;
-    padding: 15px;
     background-color: #333;
     color: white;
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 20px;
 }
+/* Responsividade */
+@media (max-width: 600px) {
+    nav#menu li {
+        display: block;
+        margin: 8px 0;
+    }
 
-/* Responsividade da barra de navegação */
-@media (max-width: 768px) {
-    nav ul {
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-    }
-}
-
-/* Responsividade geral*/
-@media (max-width: 768px) {
-    body {
-        padding: 10px;
-    }
-    
-    header h1 {
-        font-size: 2rem;
-    }
-    
-    .plantas {
-        grid-template-columns: 1fr;
-    }
-    
-    .planta-card {
-        padding: 1rem;
+    img#icone {
+        position: static;
+        display: block;
+        margin: 10px auto;
     }
 }
