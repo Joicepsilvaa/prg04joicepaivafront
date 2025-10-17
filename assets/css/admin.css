@@ -1,0 +1,62 @@
+div#interface {
+    max-width: 1100px;
+    margin: auto;
+    background-color: #f0f8f0;
+    padding: 15px;
+    border-radius: 10px;
+    font-family: Arial, sans-serif;
+}
+
+/* Cabeçalho */
+header#cabecalho {
+    background-color: #2e7d32;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* Tabela */
+table.tabela-usuarios {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.tabela-usuarios th, .tabela-usuarios td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+}
+
+.tabela-usuarios th {
+    background-color: #2e7d32;
+    color: white;
+}
+
+/* Botões */
+.btn {
+    padding: 6px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    color: white;
+}
+
+.btn.editar { background-color: #4caf50; }
+.btn.excluir { background-color: #c2185b; }
+
+.btn:hover {
+    opacity: 0.8;
+}
+
+/* Rodapé */
+footer {
+    text-align: center;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
