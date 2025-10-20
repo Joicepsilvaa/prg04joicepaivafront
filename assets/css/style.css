@@ -1,8 +1,13 @@
-/* Área principal */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #e8f5e9;
+}
+
 div#interface {
     width: 100%;
     max-width: 1100px;
-    min-width: 400px;
+    min-width: 320px;
     margin: auto;
     background-color: #f0f8f0;
     padding: 10px;
@@ -24,7 +29,7 @@ header#cabecalho h1 {
 }
 
 header#cabecalho h2 {
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: normal;
 }
 
@@ -36,43 +41,39 @@ img#icone {
 }
 
 /* Menu */
-nav#menu {
-    background-color: #1b5e20;
-    border-radius: 8px;
-    margin-top: 15px;
-    text-align: center;
-}
-
 nav#menu ul {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
     list-style: none;
     padding: 0;
-    margin: 0;
+    margin: 15px 0 0 0;
+    background-color: #1b5e20;
+    border-radius: 8px;
 }
 
 nav#menu li {
-    display: inline-block;
-    margin: 0 15px;
-    transition: background-color 1s;
-}
-
-nav#menu li:hover {
-    background-color: #4caf50;
-    border-radius: 5px;
+    margin: 5px 10px;
 }
 
 nav#menu a {
     color: white;
     text-decoration: none;
     font-weight: bold;
-    display: inline-block;
     padding: 8px 12px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
 }
 
-/* Seção principal */
+nav#menu a:hover {
+    background-color: #4caf50;
+}
+
+/* Plantas */
 .plantas {
     margin-top: 20px;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: 1fr;
     gap: 15px;
 }
 
@@ -82,6 +83,26 @@ nav#menu a {
     padding: 15px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     text-align: center;
+}
+
+/* Botão de login */
+.botao-container {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.botao-login {
+    display: inline-block;
+    background-color: #2e7d32;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.botao-login:hover {
+    background-color: #388e3c;
 }
 
 /* Rodapé */
@@ -94,16 +115,20 @@ footer {
     margin-top: 20px;
 }
 
-/* Responsividade */
-@media (max-width: 600px) {
-    nav#menu li {
-        display: block;
-        margin: 8px 0;
+/*Tablets*/
+@media (min-width: 600px) {
+    .plantas {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/*Desktops*/
+@media (min-width: 900px) {
+    .plantas {
+        grid-template-columns: repeat(3, 1fr);
     }
 
-    img#icone {
-        position: static;
-        display: block;
-        margin: 10px auto;
+    header#cabecalho h1 {
+        font-size: 2.5rem;
     }
 }
