@@ -47,48 +47,72 @@ export default function InsumoForm() {
     <div className="container mt-4">
       <h2>{id ? "Editar Insumo" : "Novo Insumo"}</h2>
 
-      <form onSubmit={salvar}>
-        <input className="form-control mb-2"
-          name="nome"
-          placeholder="Nome"
-          value={insumo.nome}
-          onChange={handleChange}
-          required
-        />
+      <form onSubmit={salvar} className="mt-3">
 
-        <input className="form-control mb-2"
-          type="number"
-          name="quantidade"
-          placeholder="Quantidade"
-          value={insumo.quantidade}
-          onChange={handleChange}
-          required
-        />
+        {/* Nome */}
+        <div className="mb-3">
+          <label className="form-label">Nome</label>
+          <input
+            className="form-control"
+            name="nome"
+            value={insumo.nome}
+            onChange={handleChange}
+            required
+          />
+        </div>
 
-        <input className="form-control mb-2"
-          name="unidadeMedida"
-          placeholder="Unidade de Medida"
-          value={insumo.unidadeMedida}
-          onChange={handleChange}
-          required
-        />
+        {/* Quantidade */}
+        <div className="mb-3">
+          <label className="form-label">Quantidade</label>
+          <input
+            type="number"
+            className="form-control"
+            name="quantidade"
+            value={insumo.quantidade}
+            onChange={handleChange}
+            required
+          />
+        </div>
 
-        <input className="form-control mb-2"
-          name="categoria"
-          placeholder="Categoria"
-          value={insumo.categoria}
-          onChange={handleChange}
-          required
-        />
+        {/* Unidade de Medida */}
+        <div className="mb-3">
+          <label className="form-label">Unidade de Medida</label>
+          <input
+            className="form-control"
+            name="unidadeMedida"
+            value={insumo.unidadeMedida}
+            onChange={handleChange}
+            required
+          />
+        </div>
 
-        <input className="form-control mb-3"
-          type="date"
-          name="dataValidade"
-          value={insumo.dataValidade || ""}
-          onChange={handleChange}
-        />
+        {/* Categoria */}
+        <div className="mb-3">
+          <label className="form-label">Categoria</label>
+          <input
+            className="form-control"
+            name="categoria"
+            value={insumo.categoria}
+            onChange={handleChange}
+            required
+          />
+        </div>
 
-        <button className="btn btn-success">Salvar</button>
+        {/* Data de Validade */}
+        <div className="mb-4">
+          <label className="form-label">Data de Validade</label>
+          <input
+            type="date"
+            className="form-control"
+            name="dataValidade"
+            value={insumo.dataValidade || ""}
+            onChange={handleChange}
+          />
+        </div>
+
+        <button className="btn btn-success">
+          Salvar
+        </button>
       </form>
     </div>
   );

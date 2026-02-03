@@ -1,24 +1,63 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell',
-    'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Oxygen, Ubuntu, Cantarell,
+    "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
+  background-color: #f8faf9;
 }
 
-.img-rosa {
-  width: 100%;
-  height: 260px;
-  object-fit: cover;
-  border-radius: 8px 8px 0 0;
-}
-
-.card {
+/* 🌿 CARD DA PLANTA */
+.plant-card {
+  background: linear-gradient(180deg, #eefaf3, #e4f4ea);
+  border: 1px solid #cfe8d8;
+  border-radius: 18px;
+  padding: 22px;
   height: 100%;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.06);
+  transition: all 0.25s ease;
 }
 
-.card-body {
+.plant-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 22px rgba(0, 0, 0, 0.1);
+}
+
+/* 🪴 NOME DA PLANTA (nível 1 – mais importante) */
+.plant-title {
+  text-align: center;
+  color: #256c44;
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+/* 🌿 CONTEÚDO */
+.plant-info {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 0.95rem;
+  color: #3d6b52;
+}
+
+/* 🌱 ESPÉCIE (nível 2) */
+.plant-info p:nth-child(1) {
+  font-weight: 600;
+  color: #2f7d4e;
+}
+
+/* 📍 LOCAL (nível 3) */
+.plant-info p:nth-child(2) {
+  color: #446b57;
+}
+
+/* 📝 OBSERVAÇÃO (nível 4 – menos destaque) */
+.plant-observacao {
+  font-size: 0.85rem;
+  color: #6b8f7a;
+  border-top: 1px dashed #cfe8d8;
+  padding-top: 8px;
+  margin-top: 6px;
+  line-height: 1.4;
 }

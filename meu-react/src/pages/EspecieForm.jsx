@@ -7,7 +7,6 @@ import {
 } from "../services/especieService";
 
 export default function EspecieForm() {
-  // Estado inicial da espécie com campos vazios
   const [especie, setEspecie] = useState({
     nomePopular: "",
     nomeCientifico: "",
@@ -15,73 +14,99 @@ export default function EspecieForm() {
     frequenciaRega: ""
   });
 
-  // Pega o ID da URL se for edição, e o hook para navegação
   const { id } = useParams();
   const navigate = useNavigate();
 
-  // Se tiver um ID na URL, busca a espécie pra preencher o formulário
   useEffect(() => {
     if (id) {
       buscarEspecie(id).then(res => setEspecie(res.data));
     }
   }, [id]);
 
-  // Atualiza o estado quando o usuário digita nos campos
   function handleChange(e) {
     setEspecie({ ...especie, [e.target.name]: e.target.value });
   }
 
-  // Salva a espécie (cria nova ou atualiza existente)
   function salvar(e) {
-    e.preventDefault(); // Evita o recarregamento da página
+    e.preventDefault();
 
-    // Decide se é criação ou edição baseado no ID
     const acao = id
       ? atualizarEspecie(id, especie)
       : criarEspecie(especie);
 
-    // Depois de salvar, volta pra lista de espécies
     acao.then(() => navigate("/especies"));
   }
 
   return (
     <div className="container mt-4">
-      <h2>{id ? "Editar Espécie" : "Nova Espécie"}</h2>
+      <h2 className="mb-4">
+        {id ? "Editar Espécie" : "Nova Espécie"}
+      </h2>
 
       <form onSubmit={salvar}>
-        <input className="form-control mb-2"
-          name="nomePopular"
-          placeholder="Nome Popular"
-          value={especie.nomePopular}
-          onChange={handleChange}
-          required
-        />
+        {/* Nome Popular */}
+        <div className="mb-3">
+          <label className="form-label fw-semibold">
+            Nome Popular
+          </label>
+          <input
+            className="form-control"
+            name="nomePopular"
+            value={especie.nomePopular}
+            onChange={handleChange}
+            placeholder="Ex: Suculenta"
+            required
+          />
+        </div>
 
-        <input className="form-control mb-2"
-          name="nomeCientifico"
-          placeholder="Nome Científico"
-          value={especie.nomeCientifico}
-          onChange={handleChange}
-          required
-        />
+        {/* Nome Científico */}
+        <div className="mb-3">
+          <label className="form-label fw-semibold">
+            Nome Científico
+          </label>
+          <input
+            className="form-control"
+            name="nomeCientifico"
+            value={especie.nomeCientifico}
+            onChange={handleChange}
+            placeholder="Ex: Echeveria elegans"
+            required
+          />
+        </div>
 
-        <input className="form-control mb-2"
-          name="luz"
-          placeholder="Tipo de Luz"
-          value={especie.luz}
-          onChange={handleChange}
-          required
-        />
+        {/* Tipo de Luz */}
+        <div className="mb-3">
+          <label className="form-label fw-semibold">
+            Tipo de Luz
+          </label>
+          <input
+            className="form-control"
+            name="luz"
+            value={especie.luz}
+            onChange={handleChange}
+            placeholder="Ex: Sol pleno, meia-sombra"
+            required
+          />
+        </div>
 
-        <input className="form-control mb-3"
-          name="frequenciaRega"
-          placeholder="Frequência de Rega"
-          value={especie.frequenciaRega}
-          onChange={handleChange}
-          required
-        />
+        {/* Frequência de Rega */}
+        <div className="mb-4">
+          <label className="form-label fw-semibold">
+            Frequência de Rega
+          </label>
+          <input
+            className="form-control"
+            name="frequenciaRega"
+            value={especie.frequenciaRega}
+            onChange={handleChange}
+            placeholder="Ex: 2 vezes por semana"
+            required
+          />
+        </div>
 
-        <button className="btn btn-success">Salvar</button>
+        <button className="btn btn-success">
+          Salvar
+        </button>
       </form>
     </div>
   );

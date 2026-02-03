@@ -1,19 +1,59 @@
 import axios from "axios";
+import { getUsuarioLogado } from "./auth";
 
-// URL base da API de espécies
 const API_URL = "http://localhost:8080/especies";
 
-// Busca todas as espécies
-export const listarEspecies = () => axios.get(API_URL);
+// lista todas as espécies DO USUÁRIO
+export const listarEspecies = () => {
+  const usuario = getUsuarioLogado();
 
-// Busca uma espécie específica pelo ID
-export const buscarEspecie = (id) => axios.get(`${API_URL}/${id}`);
+  return axios.get(API_URL, {
+    params: {
+      emailUsuario: usuario.email
+    }
+  });
+};
 
-// Cria uma nova espécie
-export const criarEspecie = (data) => axios.post(API_URL, data);
+// busca uma espécie específica
+export const buscarEspecie = (id) => {
+  const usuario = getUsuarioLogado();
 
-// Atualiza uma espécie existente
-export const atualizarEspecie = (id, data) => axios.put(`${API_URL}/${id}`, data);
+  return axios.get(`${API_URL}/${id}`, {
+    params: {
+      emailUsuario: usuario.email
+    }
+  });
+};
 
-// Remove uma espécie
-export const excluirEspecie = (id) => axios.delete(`${API_URL}/${id}`);
+// cria uma nova espécie
+export const criarEspecie = (data) => {
+  const usuario = getUsuarioLogado();
+
+  return axios.post(API_URL, data, {
+    params: {
+      emailUsuario: usuario.email
+    }
+  });
+};
+
+// atualiza uma espécie
+export const atualizarEspecie = (id, data) => {
+  const usuario = getUsuarioLogado();
+
+  return axios.put(`${API_URL}/${id}`, data, {
+    params: {
+      emailUsuario: usuario.email
+    }
+  });
+};
+
+// remove uma espécie
+export const excluirEspecie = (id) => {
+  const usuario = getUsuarioLogado();
+
+  return axios.delete(`${API_URL}/${id}`, {
+    params: {
+      emailUsuario: usuario.email
+    }
+  });
+};

@@ -13,16 +13,20 @@ import EspecieForm from "./pages/EspecieForm";
 // Planta
 import PlantaList from "./pages/PlantaList";
 import PlantaForm from "./pages/PlantaForm";
+import PlantaDetalhe from "./pages/PlantaDetalhe";
 
 // Insumo
 import InsumoList from "./pages/InsumoList";
 import InsumoForm from "./pages/InsumoForm";
 
-// Cuidado
-import CuidadoList from "./pages/CuidadoList";
-import CuidadoForm from "./pages/CuidadoForm";
+// Agenda
+import AgendaList from "./pages/AgendaList";
+import AgendaForm from "./pages/AgendaForm";
+import AgendaPlanta from "./pages/AgendaPlanta";
 
 import PrivateRoute from "./routes/PrivateRoute";
+
+
 
 function App() {
   return (
@@ -56,6 +60,7 @@ function App() {
         <Route path="/plantas/editar/:id" element={
           <PrivateRoute><PlantaForm /></PrivateRoute>
         } />
+        <Route path="/plantas/:id" element={<PlantaDetalhe />} />
 
         {/* Insumos */}
         <Route path="/insumos" element={
@@ -68,16 +73,12 @@ function App() {
           <PrivateRoute><InsumoForm /></PrivateRoute>
         } />
 
-        {/* Cuidados */}
-        <Route path="/cuidados" element={
-          <PrivateRoute><CuidadoList /></PrivateRoute>
-        } />
-        <Route path="/cuidados/novo" element={
-          <PrivateRoute><CuidadoForm /></PrivateRoute>
-        } />
-        <Route path="/cuidados/editar/:id" element={
-          <PrivateRoute><CuidadoForm /></PrivateRoute>
-        } />
+        <Route path="/agendas" element={<PrivateRoute><AgendaList /></PrivateRoute>} />
+        <Route path="/agendas/nova" element={<PrivateRoute><AgendaForm /></PrivateRoute>} />
+        <Route path="/agendas/editar/:id" element={<PrivateRoute><AgendaForm /></PrivateRoute>} />
+        <Route path="/agendas/planta/:plantaId" element={<PrivateRoute><AgendaPlanta /></PrivateRoute>} />
+
+
       </Routes>
 
       <Footer />

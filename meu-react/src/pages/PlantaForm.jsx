@@ -1,46 +1,57 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { criarPlanta, buscarPlanta, atualizarPlanta } from "../services/plantaService";
+import {
+  criarPlanta,
+  buscarPlanta,
+  atualizarPlanta
+} from "../services/plantaService";
+import { listarEspecies } from "../services/especieService";
 
 export default function PlantaForm() {
-  // Pega o ID da URL se for edição, e o hook para navegação
   const { id } = useParams();
   const navigate = useNavigate();
-  
-  // Estado da planta com valores iniciais
+
   const [planta, setPlanta] = useState({
     nomePlanta: "",
-    especieId: "", // Guarda o ID da espécie como string ou número
+    especieId: "",
     local: "",
     observacoes: ""
   });
 
-  // Se tiver ID, busca a planta pra preencher o formulário
+  const [especies, setEspecies] = useState([]);
+
+  // 🔹 Carrega espécies
+  useEffect(() => {
+    listarEspecies()
+      .then(res => setEspecies(res.data))
+      .catch(err => {
+        console.error("Erro ao carregar espécies:", err);
+        alert("Erro ao carregar espécies");
+      });
+  }, []);
+
+  // 🔹 Se for edição, carrega a planta
   useEffect(() => {
     if (id) {
       buscarPlanta(id)
         .then(res => {
-          // Formata os dados que vêm da API pro estado do formulário
-          // O backend pode retornar especieId direto ou especie.id
           setPlanta({
             nomePlanta: res.data.nomePlanta || "",
-            especieId: res.data.especieId || res.data.especie?.id || "",
+            especieId: res.data.especie?.id || "",
             local: res.data.local || "",
             observacoes: res.data.observacoes || ""
           });
         })
-        .catch(error => {
-          console.error("Erro ao carregar planta:", error);
-          alert("Erro ao carregar dados da planta");
+        .catch(err => {
+          console.error("Erro ao carregar planta:", err);
+          alert("Erro ao carregar planta");
         });
     }
   }, [id]);
 
-  // Atualiza o estado quando o usuário digita
   function handleChange(e) {
     const { name, value } = e.target;
-    
-    // Tratamento especial para o ID da espécie - converte pra número
+
     if (name === "especieId") {
       setPlanta({ ...planta, [name]: value === "" ? "" : Number(value) });
     } else {
@@ -48,32 +59,25 @@ export default function PlantaForm() {
     }
   }
 
-  // Salva ou atualiza a planta
   function salvar(e) {
-    e.preventDefault(); // Evita recarregar a página
-    
-    // Prepara os dados no formato que o backend espera
-    const dadosParaEnviar = {
-      nomePlanta: planta.nomePlanta,
-      especieId: Number(planta.especieId), // Garante que é número
-      local: planta.local,
-      observacoes: planta.observacoes || "" // Se for null/undefined, manda string vazia
-    };
-    
-    console.log("Enviando:", dadosParaEnviar); // Pra debug
-    
-    // Decide se é criação ou edição
-    const acao = id
-      ? atualizarPlanta(id, dadosParaEnviar)
-      : criarPlanta(dadosParaEnviar);
+    e.preventDefault();
 
-    // Se der certo, volta pra lista de plantas
-    // Se der erro, mostra no console e alerta
+    const dados = {
+      nomePlanta: planta.nomePlanta,
+      especieId: Number(planta.especieId),
+      local: planta.local,
+      observacoes: planta.observacoes || ""
+    };
+
+    const acao = id
+      ? atualizarPlanta(id, dados)
+      : criarPlanta(dados);
+
     acao
       .then(() => navigate("/plantas"))
-      .catch(error => {
-        console.error("Erro:", error.response?.data);
-        alert(`Erro: ${JSON.stringify(error.response?.data)}`);
+      .catch(err => {
+        console.error("Erro ao salvar:", err.response?.data);
+        alert("Erro ao salvar planta");
       });
   }
 
@@ -87,7 +91,6 @@ export default function PlantaForm() {
           <input
             className="form-control"
             name="nomePlanta"
-            placeholder="Nome da planta"
             value={planta.nomePlanta}
             onChange={handleChange}
             required
@@ -95,17 +98,21 @@ export default function PlantaForm() {
         </div>
 
         <div className="mb-3">
-          <label className="form-label">ID da Espécie *</label>
-          <input
-            type="number"
-            className="form-control"
+          <label className="form-label">Espécie *</label>
+          <select
+            className="form-select"
             name="especieId"
-            placeholder="Digite o ID da espécie"
             value={planta.especieId}
             onChange={handleChange}
             required
-            min="1" // Não aceita zero ou negativo
-          />
+          >
+            <option value="">Selecione uma espécie</option>
+            {especies.map(especie => (
+              <option key={especie.id} value={especie.id}>
+                {especie.nomePopular} — {especie.nomeCientifico}
+              </option>
+            ))}
+          </select>
         </div>
 
         <div className="mb-3">
@@ -113,7 +120,6 @@ export default function PlantaForm() {
           <input
             className="form-control"
             name="local"
-            placeholder="Ex: Sala, Quarto"
             value={planta.local}
             onChange={handleChange}
             required
@@ -125,7 +131,6 @@ export default function PlantaForm() {
           <textarea
             className="form-control"
             name="observacoes"
-            placeholder="Observações"
             value={planta.observacoes}
             onChange={handleChange}
             rows="3"
@@ -135,10 +140,11 @@ export default function PlantaForm() {
         <button type="submit" className="btn btn-success">
           {id ? "Atualizar" : "Salvar"}
         </button>
-        <button 
-          type="button" 
+
+        <button
+          type="button"
           className="btn btn-secondary ms-2"
-          onClick={() => navigate("/plantas")} // Volta pra lista sem salvar
+          onClick={() => navigate("/plantas")}
         >
           Cancelar
         </button>

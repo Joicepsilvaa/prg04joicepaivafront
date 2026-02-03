@@ -1,34 +1,59 @@
 import axios from "axios";
+import { getUsuarioLogado } from "./auth";
 
-// URL base da API de plantas
 const API_URL = "http://localhost:8080/plantas";
 
-// Busca todas as plantas (com log pra debug)
+// lista plantas do usuário
 export const listarPlantas = () => {
-  console.log("📡 GET " + API_URL);
-  return axios.get(API_URL);
+  const usuario = getUsuarioLogado();
+
+  return axios.get(API_URL, {
+    params: {
+      emailUsuario: usuario.email
+    }
+  });
 };
 
-// Busca uma planta específica pelo ID (com log pra debug)
+// busca uma planta
 export const buscarPlanta = (id) => {
-  console.log("📡 GET " + API_URL + "/" + id);
-  return axios.get(`${API_URL}/${id}`);
+  const usuario = getUsuarioLogado();
+
+  return axios.get(`${API_URL}/${id}`, {
+    params: {
+      emailUsuario: usuario.email
+    }
+  });
 };
 
-// Cria uma nova planta (com log pra debug)
+// cria planta
 export const criarPlanta = (data) => {
-  console.log("📡 POST " + API_URL, data);
-  return axios.post(API_URL, data);
+  const usuario = getUsuarioLogado();
+
+  return axios.post(API_URL, data, {
+    params: {
+      emailUsuario: usuario.email
+    }
+  });
 };
 
-// Atualiza uma planta existente (com log pra debug)
+// atualiza planta
 export const atualizarPlanta = (id, data) => {
-  console.log("📡 PUT " + API_URL + "/" + id, data);
-  return axios.put(`${API_URL}/${id}`, data);
+  const usuario = getUsuarioLogado();
+
+  return axios.put(`${API_URL}/${id}`, data, {
+    params: {
+      emailUsuario: usuario.email
+    }
+  });
 };
 
-// Remove uma planta (com log pra debug)
+// exclui planta
 export const excluirPlanta = (id) => {
-  console.log("📡 DELETE " + API_URL + "/" + id);
-  return axios.delete(`${API_URL}/${id}`);
+  const usuario = getUsuarioLogado();
+
+  return axios.delete(`${API_URL}/${id}`, {
+    params: {
+      emailUsuario: usuario.email
+    }
+  });
 };

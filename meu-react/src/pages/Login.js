@@ -39,17 +39,37 @@ export default function Login() {
 
                   <div className="mb-3">
                     <label className="form-label">E-mail</label>
-                    <input type="email" name="email" className="form-control" required />
+                    <input 
+                      type="email" 
+                      name="email" 
+                      className="form-control" 
+                      required 
+                    />
                   </div>
 
                   <div className="mb-3">
                     <label className="form-label">Senha</label>
-                    <input type="password" name="senha" className="form-control" required />
+                    <input 
+                      type="password" 
+                      name="senha" 
+                      className="form-control" 
+                      required 
+                    />
                   </div>
 
-                  <button type="submit" className="btn btn-success w-100">
+                  <button type="submit" className="btn btn-success w-100 mb-2">
                     Entrar
                   </button>
+
+                  {/* Botão de cadastro */}
+                  <button
+                    type="button"
+                    className="btn btn-outline-success w-100"
+                    onClick={() => navigate("/usuarios/novo")}
+                  >
+                    Cadastrar usuário
+                </button>
+
 
                 </form>
 
